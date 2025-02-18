@@ -1,0 +1,16 @@
+llama-index
+openai
+llama-parse
+cohere
+pandas
+asyncio
+ragas
+deepeval
+llama-index-llms-groq
+llama-index-embeddings-huggingface
+huggingface-hub
+langchain
+langchain-openai
+langchain-groq
+nest-asyncio
+shutil
