@@ -1,5 +1,9 @@
 # MIES-RAG 
 
+The chart below presents the benchmark results of various LLM models, evaluated using the [Ragas](https://github.com/explodinggradients/ragas) library. The analysis assesses the quality of generated responses encoded according to key metrics.  
+
+![Benchmark results of LLM models](assets/ragas-chart.svg)
+
 # Program Setup Instructions
 
 ## Prerequisites
