@@ -72,6 +72,7 @@ class MultiStepQueryEngineWorkflow(Workflow):
         
         new_node = 0
         ready = ctx.collect_events(ev, [AnswerEvent]*ctx.data["question_collect_count"])
+        pref = "[MQ]" if ctx.data["question_collect_count"]==1 else "[SQ]"
         if ready is None:
             return None
         for event in ready:
@@ -81,7 +82,7 @@ class MultiStepQueryEngineWorkflow(Workflow):
                     new_node += 1
                 else:
                     ctx.data["source_nodes_dict"][node.node_id].score += node.score  
-            ctx.data["reasoning"].append({"question": event.question, "answer": event.answer})
+            ctx.data["reasoning"].append({"question": f"{pref} {event.question}", "answer": event.answer})
         print(f"{"[MQ]" if ctx.data["question_collect_count"]==1 else "[SQ]"} New nodes (contexts): {new_node}")
         if ctx.data["cur_steps"] >= ctx.data["max_steps"] or new_node == 0:
             ctx.data["should_synthesize"] = True
@@ -219,6 +220,7 @@ class MultiStepQueryEngineWorkflow(Workflow):
             "question": ctx.data["question"],
             "answer": final_response,
             "code": code,
+            "reasoning": [{'question': f'{r['question']}', 'answer': f'{r['answer']}'} for r in ctx.data["reasoning"]],
             "best_context": [{"context": context.get_content().strip(), "score": context.score} for context in best_contexts],
             "contexts": contexts,
         }
