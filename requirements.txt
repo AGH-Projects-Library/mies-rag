@@ -13,3 +13,5 @@ llama-index-utils-workflow
 llama-index-llms-ollama
 llama-index-postprocessor-cohere_rerank
 llama-cloud
+google-genai
+git+https://github.com/titipata/scipdf_parser
