@@ -6,7 +6,7 @@ import nest_asyncio
 from llama_index.core import Settings
 from llama_index.llms.openai import OpenAI 
 from llama_index.llms.groq import Groq
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+# from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.utils.workflow import draw_all_possible_flows
 
 
@@ -55,11 +55,11 @@ def main():
 
     elif API == "groq":
         print(f"Using {MODEL} model")
-        os.environ["GROQ_API_KEY"] = GROQ_API_KEY
-        llm = Groq(model=MODEL)
-        embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
-        Settings.llm = llm
-        Settings.embed_model = embed_model
+        # os.environ["GROQ_API_KEY"] = GROQ_API_KEY
+        # llm = Groq(model=MODEL)
+        # embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+        # Settings.llm = llm
+        # Settings.embed_model = embed_model
     
 
     if CLEAR_STORAGE:
@@ -72,7 +72,7 @@ def main():
             elif os.path.isdir(item_path):
                 shutil.rmtree(item_path)
     
-    output_path = os.path.join(OUTPUT_PATH, f"{time.strftime("%Y.%m.%d_%H.%M.%S")}")
+    output_path = os.path.join(OUTPUT_PATH, f"{time.strftime('%Y.%m.%d_%H.%M.%S')}")
     
     questionsManager = QuestionsManager(QUERIES, STORAGE_PATH, Settings.llm)
     raportGenerator = ReportGenerator(QUERIES, output_path)

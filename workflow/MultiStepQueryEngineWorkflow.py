@@ -33,9 +33,7 @@ class MultiStepQueryEngineWorkflow(Workflow):
             2. Incorporate key aspects of the collected information.
             3. Remain clear and specific.
 
-            Provide only the reformulated question as the output. Do not include any explanations, formatting, or additional text. The answer must be a single plain string.
-
-        '''
+            Provide only the reformulated question as the output. Do not include any explanations, formatting, or additional text. The answer must be a single plain string.'''
 
         new_query = llm.complete(prompt)
         

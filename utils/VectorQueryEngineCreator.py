@@ -6,7 +6,8 @@ from llama_index.postprocessor.cohere_rerank import CohereRerank
 from llama_index.core import VectorStoreIndex, StorageContext, get_response_synthesizer, load_index_from_storage
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
-
+from FigureExtraction import *
+from llama_index.core.schema import Document
 from llama_index.core import SimpleDirectoryReader
 
 class VectorQueryEngineCreator:
@@ -26,10 +27,14 @@ class VectorQueryEngineCreator:
                 api_key=self.llama_parse_api_key,
                 result_type="markdown"
             ).load_data(path_to_pdf)
+            get_figures_and_tables_from_papers("outputs",path_to_pdf)
+            additional_texts = analyze_figures_and_tables_with_gemma("outputs/figures")
+            additional_docs = [Document(text=text) for text in additional_texts]
+            all_docs = documents + additional_docs
             node_parser = MarkdownElementNodeParser(
                 llm=OpenAI(model=self.model), num_workers=8
             )
-            nodes = node_parser.get_nodes_from_documents(documents)
+            nodes = node_parser.get_nodes_from_documents(all_docs)
         elif self.api == "groq":
             documents = SimpleDirectoryReader(input_files=[path_to_pdf]).load_data()
             node_parser = None

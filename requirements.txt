@@ -7,10 +7,9 @@ asyncio
 ragas
 deepeval
 llama-index-llms-groq
-llama-index-embeddings-huggingface
-huggingface-hub
-langchain
-langchain-openai
-langchain-groq
-nest-asyncio
-shutil
+llama-index-embeddings-ollama
+ollama
+llama-index-utils-workflow
+llama-index-llms-ollama
+llama-index-postprocessor-cohere_rerank
+llama-cloud

@@ -61,7 +61,7 @@ class ReportGenerator:
             for r in entry["result"]:
                 context = ""
                 for i, c in enumerate(r["best_context"]):
-                    context += f"{i+1}.  {c["context"]} \n"
+                    context += f"{i+1}.  {c['context']} \n"
                 data_row.append(context)
                 data_row.append(r["answer"])
                 data_row.append(r["code"])

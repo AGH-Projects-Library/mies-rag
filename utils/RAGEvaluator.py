@@ -1,7 +1,7 @@
 import json
 import os
-from langchain_groq import ChatGroq
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+# from langchain_groq import ChatGroq
+# from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 from ragas.llms import LangchainLLMWrapper
 from ragas.embeddings import LangchainEmbeddingsWrapper
