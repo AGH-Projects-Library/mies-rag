@@ -15,4 +15,3 @@ llama-index-postprocessor-cohere_rerank
 llama-cloud
 google-genai
 git+https://github.com/titipata/scipdf_parser
-spacy download en_core_web_sm

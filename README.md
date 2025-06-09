@@ -16,6 +16,7 @@ Before running the program, make sure you have the following software installed:
 1. Install the required libraries by running the following command in the terminal:
     ```bash
     pip install -r requirements.txt
+    python -m spacy download en_core_web_sm
     ```
 
 ## Preparation
